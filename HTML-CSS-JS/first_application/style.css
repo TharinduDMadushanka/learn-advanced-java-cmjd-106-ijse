@@ -7,3 +7,7 @@ body{
     display: flex; /* flex to horizontoly */
     flex-direction: row; /* flex like a row(side by side) */
 }
+
+.nav-bar{
+    list-style-type: none; /* change icon infront of the list items */
+}
