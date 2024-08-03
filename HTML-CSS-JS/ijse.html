@@ -6,9 +6,17 @@
 
     <style>
 
-
-        div p{
+    /* decendant selector */
+        /* div p{
             background-color: red;
+            font-style: italic;
+        } */
+
+
+        /* child selector */
+        div>p{
+            background-color: red;
+            font-style: italic;
         }
 
         /* *{
@@ -153,8 +161,11 @@
 
         <span>
             <p>pargraph inside section and span</p>
+            <div>
+                <p>Pargraph inside section,span,div</p>
+            </div>
         </span>
-
+        <p>Paragrap inside direct div and below section</p>
     </div>
 
     <section>
