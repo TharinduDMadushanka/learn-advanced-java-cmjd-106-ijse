@@ -65,27 +65,42 @@
         console.log("Shorter method adding 5 : ",age)
 
         // Arithmatic Operators
-        let math = 95;
+        let maths = 95;
         let sinhala =80;
-        let total = math+sinhala;
+        let total = maths+sinhala;
 
         console.log("Total is ",total)
 
-        let def = math-sinhala;
+        let def = maths-sinhala;
         console.log("Different is ",def)
 
-        let mul = math*sinhala
+        let mul = maths*sinhala
         console.log("Multiplication is ",mul)
 
         let avg= total/2;
         console.log("Average is ",avg)
 
         // Comparison Operator (< >,==,!=)
-        console.log("sinhala > maths : ", sinhala > math);//false
-        console.log("maths > sinhala : ", math > sinhala);//true
-        console.log("maths == sinhala : ", math == sinhala);//false
-        console.log("maths != sinhala : ", math != sinhala);//true
+        console.log("sinhala > maths : ", sinhala > maths);//false
+        console.log("maths > sinhala : ", maths > sinhala);//true
+        console.log("maths == sinhala : ", maths == sinhala);//false
+        console.log("maths != sinhala : ", maths != sinhala);//true
 
+        // Logical Operator (&&,||,!)
+
+        // && (logical and) - both conditions should be true
+        // || (logical or)  - alteast one condition should be true
+        //  ! (logical not) - opposite
+
+        console.log("(maths > sinhala) && (maths > 98) : ", (maths > sinhala) && (maths > 98));// false
+        console.log("(maths > sinhala) && (maths < 98) : ", (maths > sinhala) && (maths < 98));// true
+
+
+        console.log("(maths > sinhala) || (maths > 98) : ", (maths > sinhala) || (maths > 98));// true
+        console.log("(maths < sinhala) || (maths < 98) : ", (maths < sinhala) || (maths < 98));// true
+        console.log("(maths < sinhala) || (maths > 98) : ", (maths < sinhala) || (maths > 98));// false
+
+        console.log("!(maths == 95) : ", !(maths == 95)); //false
 
 
     </script>
