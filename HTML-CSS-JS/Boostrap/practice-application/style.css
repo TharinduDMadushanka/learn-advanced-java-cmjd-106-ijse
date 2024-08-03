@@ -1,0 +1,9 @@
+.login{
+    width: 500px;
+  
+    background-color: rgb(255, 255, 255);
+    /* position: relative; */
+    top: 150px;
+    margin-inline: auto; /* left and right margin */
+}
+
