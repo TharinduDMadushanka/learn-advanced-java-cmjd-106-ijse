@@ -1,0 +1,9 @@
+body{
+     margin: 0; /*reduce body margin to 0 */
+}
+
+.header{
+    background-color: antiquewhite;
+    display: flex; /* flex to horizontoly */
+    flex-direction: row; /* flex like a row(side by side) */
+}
