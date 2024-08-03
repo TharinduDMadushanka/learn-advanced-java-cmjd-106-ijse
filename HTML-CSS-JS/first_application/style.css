@@ -86,7 +86,7 @@ body{
 }
 
 /* media query */
-@media(max-width:425px){
+@media(max-width:425px){ /* this ccs apply when display minimize below to 425px */
     .header{
         display: block;
     }
@@ -94,5 +94,8 @@ body{
         width: 100%;
         text-align: center;
     }
-    
+    .home-img{
+        height: 300px;
+        background-position: top;
+    }
 }
