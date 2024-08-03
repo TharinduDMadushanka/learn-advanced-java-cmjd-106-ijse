@@ -7,6 +7,7 @@
 
     <style>
 
+        /* Relative */
         .relative{
             border: solid 1px red;
             position: relative;
@@ -15,6 +16,7 @@
             top: 30px;
         }
 
+        /* Fixed */
         .fixed{
             border: solid 1px red;
             position: fixed;
@@ -24,15 +26,40 @@
             width: 200px;
         }
         
+        /* Absolute */
+        .relative-absolute{
+            border: solid 1px red;
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .absolute{
+            position: absolute;
+            border: solid 1px black;
+            /* change absolute position */
+            top: 80px;
+            right: 0;
+        }
 
     </style>
 
 </head>
 <body>
 
+    <!-- Relative -->
     <!--<div class="relative"> Positon Relative Element </div>-->
 
-    <div class="fixed"> Positon Fixed Element </div>
+    <!-- Fixed -->
+    <!-- <div class="fixed"> Positon Fixed Element </div> -->
     
+    <!-- Absolute -->
+    <div class="relative-absolute">Position Relative Element
+        <div class="absolute">
+            Position Absolute Element
+        </div>
+    </div>
+
+
 </body>
 </html>
