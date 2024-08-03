@@ -6,6 +6,15 @@ body{
     background-color: antiquewhite;
     display: flex; /* flex to horizontoly */
     flex-direction: row; /* flex like a row(side by side) */
+    padding: 5px 10px; /* top-bottom 5px and right-left 10px */
+}
+
+.logo{
+    width: 30%; /* give 30% from the screen o logo div */
+}
+
+.nav{
+    width: 70%;
 }
 
 .nav-bar{
@@ -15,4 +24,12 @@ body{
 /* css combinators */
 .nav-bar>li{
     display: inline-block; /* change list items horizontoly */
+    margin-right: 20px; /* gap between list items */
 }
+
+/* psudo style for list items */
+.nav-bar>li:hover{
+    color: red;
+    cursor: pointer;
+}
+
