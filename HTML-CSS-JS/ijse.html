@@ -14,9 +14,14 @@
 
 
         /* child selector */
-        div>p{
+        /* div>p{
             background-color: red;
             font-style: italic;
+        } */
+
+        /* Adjecent sibling selector */
+        div+p{
+            background-color: red;
         }
 
         /* *{
@@ -164,10 +169,11 @@
             <div>
                 <p>Pargraph inside section,span,div</p>
             </div>
+            <p>Para inside section an span and directly after div element</p>
         </span>
         <p>Paragrap inside direct div and below section</p>
     </div>
-
+        <p>Paragrap after direct div </p>
     <section>
         <p>paragrap outside parent div elrmrnt</p>
     </section>
