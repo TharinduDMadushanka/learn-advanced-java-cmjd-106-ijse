@@ -50,9 +50,9 @@ body{
     padding: 20px 30px;
     position: absolute;
     right: 50px;
-    top: 200px;
+    top: 150px;
     border-radius: 20px;
-    text-align: end;
+    text-align: right;
 }
 
 /* css for a tag inside home-text*/
