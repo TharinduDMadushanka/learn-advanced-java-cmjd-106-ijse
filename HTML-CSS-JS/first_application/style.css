@@ -11,3 +11,8 @@ body{
 .nav-bar{
     list-style-type: none; /* change icon infront of the list items */
 }
+
+/* css combinators */
+.nav-bar>li{
+    display: inline-block; /* change list items horizontoly */
+}
