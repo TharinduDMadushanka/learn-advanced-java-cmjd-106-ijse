@@ -36,9 +36,11 @@ body{
 /* css for body content image */
 .home-img{
     height: 500px;
+    margin-top: 10px;
     /* background-color: aqua; */
     background-image: url(asset/img1.jpg);
     background-size: cover; /* remove duplicates */
+    position: relative;
 }
 
 /* css for body text  */
@@ -53,7 +55,7 @@ body{
     text-align: end;
 }
 
-/* css for a tag inside  */
+/* css for a tag inside home-text*/
 .home-text>a{
     border: 1px solid red;
     padding: 10px;
@@ -64,4 +66,21 @@ body{
     background-color: red;
     color: white;
     cursor: pointer;
+}
+
+.content{
+    display: flex; /*devide equally side by side*/
+    margin: 10px;
+}
+
+.col-1{
+    width: 60%;
+    /* border: 1px solid black; */
+    text-align: justify;
+    margin-right: 18px;
+}
+
+.col-2{
+    width: 40%;
+    text-align: justify;
 }
