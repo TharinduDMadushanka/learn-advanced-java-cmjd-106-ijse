@@ -20,7 +20,7 @@
 
             <br>
 
-            <form>
+            <form onsubmit="validate(event)">
                 <div class="form-group mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" placeholder="name@example.com">
@@ -32,7 +32,7 @@
                   </div>
 
                   <div class="form-group mb-3 text-center">
-                    <button type="button" class="btn btn-primary w-50 ">Login</button>
+                    <button type="submit" class="btn btn-primary w-50 ">Login</button>
                   </div>  
             </form>
 
@@ -45,6 +45,27 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+    <script>
+
+        // check form's input fields are empty or not
+        function validate(event){
+            event.preventDefault();
+            console.log("=============")
+
+            let email = document.getElementById('email').value;
+            console.log(email);
+
+            let password = document.getElementById('password').value;
+            console.log(password);
+
+            if(email != '' && password !=''){
+                console.log("Valid..!")
+            }else{
+                console.log("Invalid..!")
+            }
+        }
+
+    </script>
     
 
 </body>
