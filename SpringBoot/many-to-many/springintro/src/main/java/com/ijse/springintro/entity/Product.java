@@ -1,8 +1,11 @@
 package com.ijse.springintro.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,5 +26,10 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    //map product
+    @JsonIgnore // stop sercurler dependency error
+    @ManyToMany(mappedBy = "orderedProduct")
+    private List<Order> orders;
 
 }

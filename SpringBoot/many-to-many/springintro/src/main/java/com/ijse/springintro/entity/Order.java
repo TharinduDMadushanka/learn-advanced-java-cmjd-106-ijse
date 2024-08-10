@@ -34,7 +34,7 @@ public class Order {
     // map many to many relationship
     @ManyToMany
     @JoinTable(
-            name = "order_product",
+            name = "orderedProduct",
             joinColumns = @JoinColumn(name = "OrderId"),
             inverseJoinColumns = @JoinColumn(name = "productId")
     )
