@@ -39,16 +39,19 @@ public class OrderController {
         // get product ids from order dtos to productIds array
         List<Long> productIds = orderDto.getOrderIds();
 
+        List<Product> orderedProduct = order.getOrderedProducts();
+
         productIds.forEach(productId ->{
             //get product by id
             Product product = productService.getProductById(productId);
             // add this product to order
             if(product != null){
-                order.getOrderedProducts().add(product);
+                orderedProduct.add(product);
             }
             // set order's total price
             order.setTotalPrice(order.getTotalPrice()+product.getPrice());
         });
+        order.setOrderedProducts(orderedProduct);
 
 //        save the order in DB
         orderService.createOrder(order);
