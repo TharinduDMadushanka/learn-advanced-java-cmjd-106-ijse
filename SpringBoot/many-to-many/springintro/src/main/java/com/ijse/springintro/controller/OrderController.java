@@ -46,9 +46,11 @@ public class OrderController {
             if(product != null){
                 order.getOrderedProducts().add(product);
             }
+            // set order's total price
             order.setTotalPrice(order.getTotalPrice()+product.getPrice());
         });
 
+//        save the order in DB
         orderService.createOrder(order);
         return ResponseEntity.status(201).body(order);
     }
