@@ -133,6 +133,38 @@
             index++;
         }
 
+        // Arrays
+        // let cars = ["BMW", "AUDI", "BENZ"];
+        const cars = ["BMW", "AUDI", "BENZ"];
+        console.log(cars);
+        cars.push("ABC");
+        console.log("After new car", cars);
+        cars.pop()
+        console.log("After pop", cars);
+
+        // for loop
+        for (let i = 0; i < cars.length; i++) {
+            console.log(cars[i]);
+        }
+        let j = 0
+
+        // while loop
+        while (j < cars.length) {
+            console.log(cars[j]);
+            j++;
+        }
+        // for in loop
+        for (let index in cars) {
+            console.log(index);
+            console.log(cars[index]);
+        }
+
+        // for of loop
+        for (let value of cars) {
+            console.log(value);
+
+        }
+
     </script>
 
 </body>
