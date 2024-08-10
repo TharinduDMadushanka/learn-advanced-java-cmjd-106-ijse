@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,6 +24,7 @@ public class OrderController {
 
     @Autowired
     private ProductService productService;
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -39,7 +41,9 @@ public class OrderController {
         // get product ids from order dtos to productIds array
         List<Long> productIds = orderDto.getOrderIds();
 
-        List<Product> orderedProduct = order.getOrderedProducts();
+        order.setTotalPrice(0.0);
+
+        List<Product> orderedProduct = new ArrayList<>();
 
         productIds.forEach(productId ->{
             //get product by id
