@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -27,5 +30,14 @@ public class Order {
             this.orderDateTime = LocalDate.now();
         }
     }
+
+    // map many to many relationship
+    @ManyToMany
+    @JoinTable(
+            name = "order_product",
+            joinColumns = @JoinColumn(name = "OrderId"),
+            inverseJoinColumns = @JoinColumn(name = "productId")
+    )
+    private List<Product> orderedProducts;
 
 }
