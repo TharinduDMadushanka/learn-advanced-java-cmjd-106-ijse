@@ -19,8 +19,15 @@ function App() {
     )
 }
 
+// define a type
+interface VehicleType{
+    title: string,
+    description:string
+}
+
+
 // child components
-function Vehicle(props: any) {
+function Vehicle(props: VehicleType) {
     return (
         <div>
             <h3>{props.title}</h3>
