@@ -28,8 +28,8 @@ public class Product {
     private Category category;
 
     //map product
-    @JsonIgnore // stop sercurler dependency error
-    @ManyToMany(mappedBy = "orderedProduct")
+    @JsonIgnore // stop circular dependency error
+    @ManyToMany(mappedBy = "orderedProducts") // Use "orderedProducts" to match the Order entity
     private List<Order> orders;
 
 }

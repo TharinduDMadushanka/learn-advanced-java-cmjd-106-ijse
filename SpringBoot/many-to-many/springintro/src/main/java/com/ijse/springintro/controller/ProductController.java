@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class  ProductController {
+@RequestMapping("/products")
+public class ProductController {
 
     @Autowired
     private ProductService productService;
@@ -20,42 +21,40 @@ public class  ProductController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/products")
+    @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.getAllProducts();
         return ResponseEntity.status(200).body(products);
     }
 
-    @PostMapping("/products")
+    @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody ProductRequestDto productRequestDto) {
         Product product = new Product();
         product.setName(productRequestDto.getName());
         product.setPrice(productRequestDto.getPrice());
         product.setDescription(productRequestDto.getDescription());
 
-        // retrieve category by category id and set it
+        // Retrieve category by category ID and set it
         Category category = categoryService.getCategoryById(productRequestDto.getCategoryId());
         product.setCategory(category);
 
         Product createdProduct = productService.createProduct(product);
         return ResponseEntity.status(201).body(createdProduct);
-
     }
 
-    @PutMapping("/products/${productId}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Long productId, @RequestBody ProductRequestDto productRequestDto) {
-
+    @PutMapping("/{productId}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long productId,
+                                                 @RequestBody ProductRequestDto productRequestDto) {
         Product product = new Product();
         product.setName(productRequestDto.getName());
         product.setPrice(productRequestDto.getPrice());
         product.setDescription(productRequestDto.getDescription());
 
-        // retrieve category by category id and set it
+        // Retrieve category by category ID and set it
         Category category = categoryService.getCategoryById(productRequestDto.getCategoryId());
         product.setCategory(category);
 
-        Product updatedProduct = productService.updateProduct(productId,product);
-
+        Product updatedProduct = productService.updateProduct(productId, product);
         return ResponseEntity.status(200).body(updatedProduct);
     }
 }

@@ -5,13 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -22,16 +21,15 @@ public class Order {
 
     private Double totalPrice;
 
-//    when create an entity automatically set current local date & time
-
-    @PrePersist //    execute before thr entity is created
+    //    when create an entity automatically set current local date & time
+    @PrePersist //    execute before the entity is created
     protected void onCreate() {
-        if(this.orderDateTime == null) {
+        if (this.orderDateTime == null) {
             this.orderDateTime = LocalDate.now();
         }
     }
 
-    // map many to many relationship
+    // map many-to-many relationship
     @ManyToMany
     @JoinTable(
             name = "orderedProduct",
