@@ -3,6 +3,7 @@ package com.ijse.springintro.controller;
 import com.ijse.springintro.dto.OrderDto;
 import com.ijse.springintro.entity.Order;
 import com.ijse.springintro.entity.Product;
+import com.ijse.springintro.repository.OrderRepository;
 import com.ijse.springintro.service.OrderService;
 import com.ijse.springintro.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class OrderController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private OrderRepository orderRepository;
 
     @GetMapping("/orders")
     public ResponseEntity<List<Order>> getAllOrders() {
@@ -38,9 +41,16 @@ public class OrderController {
 
         productIds.forEach(productId ->{
             //get product by id
-//            Product product = productService.getProductById();
+            Product product = productService.getProductById(productId);
             // add this product to order
+            if(product != null){
+                order.getOrderedProducts().add(product);
+            }
+            order.setTotalPrice(order.getTotalPrice()+product.getPrice());
         });
+
+        orderService.createOrder(order);
+        return ResponseEntity.status(201).body(order);
     }
 
 }
