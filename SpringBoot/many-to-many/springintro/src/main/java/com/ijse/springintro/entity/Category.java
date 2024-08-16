@@ -1,11 +1,16 @@
 package com.ijse.springintro.entity;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 
 @Entity
 @Getter
@@ -18,8 +23,8 @@ public class Category {
 
     private String name;
 
-    @JsonIgnore // Ignore products in category (Circuler Dependency error)
-    @OneToMany(mappedBy = "category") // mapping by Product.java s category attribute
+    @JsonIgnore
+    @OneToMany(mappedBy = "category")
     private List<Product> products;
 
 }

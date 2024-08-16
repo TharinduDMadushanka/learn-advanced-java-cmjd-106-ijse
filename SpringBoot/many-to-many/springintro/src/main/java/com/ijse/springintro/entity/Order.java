@@ -1,11 +1,19 @@
 package com.ijse.springintro.entity;
 
-import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Getter
@@ -17,23 +25,21 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate orderDateTime;
+    private LocalDateTime orderDateTime;
 
     private Double totalPrice;
 
-    //    when create an entity automatically set current local date & time
-    @PrePersist //    execute before the entity is created
+    @PrePersist //executes before the entity is created
     protected void onCreate() {
-        if (this.orderDateTime == null) {
-            this.orderDateTime = LocalDate.now();
+        if(this.orderDateTime == null) {
+            this.orderDateTime = LocalDateTime.now();
         }
     }
 
-    // map many-to-many relationship
     @ManyToMany
     @JoinTable(
-            name = "orderedProduct",
-            joinColumns = @JoinColumn(name = "OrderId"),
+            name = "order_product",
+            joinColumns = @JoinColumn(name = "orderId"),
             inverseJoinColumns = @JoinColumn(name = "productId")
     )
     private List<Product> orderedProducts;

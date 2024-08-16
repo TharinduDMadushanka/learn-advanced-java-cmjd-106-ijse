@@ -1,11 +1,12 @@
 package com.ijse.springintro.service;
 
-import com.ijse.springintro.entity.Product;
-import com.ijse.springintro.repository.ProductRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.ijse.springintro.entity.Product;
+import com.ijse.springintro.repository.ProductRepository;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -27,14 +28,14 @@ public class ProductServiceImpl implements ProductService {
     public Product updateProduct(Long id, Product product) {
         Product existingProduct = productRepository.findById(id).orElse(null);
 
-        if (existingProduct == null) {
+        if(existingProduct == null) {
             return null;
-
-        }else {
+        } else {
             existingProduct.setName(product.getName());
             existingProduct.setPrice(product.getPrice());
             existingProduct.setDescription(product.getDescription());
             existingProduct.setCategory(product.getCategory());
+
             return productRepository.save(existingProduct);
         }
     }

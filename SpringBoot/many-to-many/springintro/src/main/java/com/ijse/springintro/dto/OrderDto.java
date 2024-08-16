@@ -1,14 +1,12 @@
 package com.ijse.springintro.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
-public class OrderDto {
-
-    private List<Long> orderIds;
-
+public class OrderDTO {
+    private List<Long> productIds;
 }

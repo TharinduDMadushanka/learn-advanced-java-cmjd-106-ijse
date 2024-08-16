@@ -1,16 +1,17 @@
 package com.ijse.springintro.service;
 
-import com.ijse.springintro.entity.Task;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.ijse.springintro.entity.Task;
 
 @Service
 public interface TaskService {
-    //what do we except to do with tasks
-    List<Task> getTasksList();//Reading
-    Task createTask(Task task);//Creating
-    Task getTaskById(Long id);// finding the Task by its primary key
-    Task updateTask(long id, Task task); // find task and update
-    void deleteTask(long id);  // delete task
+    //what do we expect to do with Tasks
+    List<Task> getTasksList(); //reading
+    Task createTask(Task task); //creating
+    Task getTaskById(Long id); //finding a task by it's primary key
+    Task updateTask(Long id, Task task); //find task and update
+    void deleteTask(Long id); //delete task
 }

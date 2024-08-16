@@ -1,19 +1,21 @@
 package com.ijse.springintro.service;
 
-import com.ijse.springintro.entity.Task;
-import com.ijse.springintro.repository.TaskRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.ijse.springintro.entity.Task;
+import com.ijse.springintro.repository.TaskRepository;
 
 @Service
 public class TaskServiceImpl implements TaskService {
-    @Autowired // automatically injection the dependency
+
+    @Autowired //automatically injecting the dependencies
     private TaskRepository taskRepository;
 
     @Override
-    public List<Task> getTasksList(){
+    public List<Task> getTasksList() {
         return taskRepository.findAll();
     }
 
@@ -28,12 +30,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task updateTask(long id, Task task) {
+    public Task updateTask(Long id, Task task) {
         Task existingTask = taskRepository.findById(id).orElse(null);
 
-        if (existingTask == null) {
+        if(existingTask == null) {
             return null;
-        }else {
+        } else {
             existingTask.setTaskName(task.getTaskName());
             existingTask.setPriority(task.getPriority());
             existingTask.setDueDate(task.getDueDate());
@@ -42,7 +44,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void deleteTask(long id) {
+    public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
+
 }

@@ -1,9 +1,10 @@
 package com.ijse.springintro.service;
 
-import com.ijse.springintro.entity.Order;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.ijse.springintro.entity.Order;
 
 @Service
 public interface OrderService {
