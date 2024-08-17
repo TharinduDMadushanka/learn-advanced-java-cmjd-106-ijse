@@ -13,6 +13,10 @@ function Category(){
         setCategories(response.data);
     }
 
+    function handleCategoryName(event:any){
+        setCategoryName(event.target.value)
+    }
+
     return(
         <div>
             <h1>Categories</h1>
@@ -32,7 +36,7 @@ function Category(){
 
             <form>
                 <label>Category Name: </label>
-                <input type="text" required/>
+                <input type="text" onChange={handleCategoryName} required/>
 
                 <button>Create Category</button>
             </form>
