@@ -19,10 +19,10 @@ function App() {
 }
 
 // define a type
-interface VehicleType{
-    title: string,
-    description:string
-}
+// interface VehicleType{
+//     title: string,
+//     description:string
+// }
 
 
 // child components
