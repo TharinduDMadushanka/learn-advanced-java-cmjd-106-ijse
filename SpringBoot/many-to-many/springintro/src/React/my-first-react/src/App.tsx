@@ -7,10 +7,16 @@ import Vehicle from "./components/vehicle.tsx";
 function App() {
     // const [count, setCount] = useState(0)
 
+    //hooks
+    const [username, setUsername] = useState<String>(" ");
+
     return (
         <div>
-            <h1>This is my first React app</h1>
+            <h1>Hello</h1>
             <p>You can edit this..!</p>
+
+            <label>Enter user name  </label>
+            <input type="text"></input>
 
             <h2>Vehicle</h2>
             <Vehicle title="Toyota Corolla" description="Toyota corolla is the hoghest sold vehicle " />
