@@ -2,10 +2,17 @@ import './App.css';
 
 // @ts-ignore
 import Home from "./pages/Home.tsx";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 // Parent component
 function App() {
-    return Home();
+    return(
+        <BrowserRouter>
+            <Routes>
+                <Route path= "/" element = {<Home/>}/>
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 // Define a type
