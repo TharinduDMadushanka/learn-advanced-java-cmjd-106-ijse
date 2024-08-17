@@ -1,18 +1,23 @@
-// import {useState} from 'react'
-
-import './App.css'
+import './App.css';
 import Vehicle from "./components/vehicle.tsx";
 import {useState} from "react";
 
-// parent components
+// Parent component
 function App() {
-    // const [count, setCount] = useState(0)
+    // useState hook for username
+    const [username, setUsername] = useState<string>("");
 
-    //hooks - useState hook
-    const [username, setUsername] = useState<String>(" ");
+    // useState hook for count
+    const [count, setCount] = useState<number>(0);
 
-    function handleInputChange(event: any){
+    // Handle input change for username
+    function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
         setUsername(event.target.value);
+    }
+
+    // Handle increase button click
+    function increaseCount() {
+        setCount(count + 1);
     }
 
     return (
@@ -21,23 +26,25 @@ function App() {
             <p>You can edit this..!</p>
 
             <label>Enter user name  </label>
-            <input type="text" onChange={handleInputChange}/>
+            <input type="text" onChange={handleInputChange} />
+
+            <h1>Count: {count}</h1>
+            <button onClick={increaseCount}>Increase</button>
 
             <h2>Vehicle</h2>
-            <Vehicle title="Toyota Corolla" description="Toyota corolla is the hoghest sold vehicle " />
-            <Vehicle title="Toyota Landcruser" description="Toyota Landcruser is the hoghest sold vehicle " />
+            <Vehicle title="Toyota Corolla" description="Toyota Corolla is the highest sold vehicle" />
+            <Vehicle title="Toyota Land Cruiser" description="Toyota Land Cruiser is the highest sold vehicle" />
         </div>
     )
 }
 
-// define a type
-// interface VehicleType{
-//     title: string,
-//     description:string
+// Define a type
+// interface VehicleType {
+//     title: string;
+//     description: string;
 // }
 
-
-// child components
+// Child component
 // function Vehicle(props: VehicleType) {
 //     return (
 //         <div>
@@ -47,4 +54,4 @@ function App() {
 //     )
 // }
 
-export default App
+export default App;
