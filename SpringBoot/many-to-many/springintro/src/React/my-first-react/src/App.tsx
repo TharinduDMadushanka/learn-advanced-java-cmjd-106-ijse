@@ -1,6 +1,7 @@
 // import {useState} from 'react'
 
 import './App.css'
+import Vehicle from "./components/vehicle.tsx";
 
 // parent components
 function App() {
