@@ -2,8 +2,9 @@ import axios from "axios";
 
 function Category(){
 
-    function loadCategories(){
-        axios.get("http://localhost:8080/categories")
+    async function loadCategories(){
+        const response = await axios.get("http://localhost:8080/categories");
+        console.log(response);// debugging
     }
 
     return(
