@@ -9,7 +9,7 @@ function Category(){
     return(
         <div>
             <h1>Categories</h1>
-            <button onClick={loadCategories}>load</button>
+            <button onClick={loadCategories}>Load Category</button>
         </div>
     )
 }
