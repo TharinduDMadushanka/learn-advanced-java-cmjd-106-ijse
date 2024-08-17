@@ -5,7 +5,8 @@ import CategoryType from "../types/CategoryType";
 function Category(){
 
     const [categories, setCategories] = useState<CategoryType[]>([]);
-
+    const [categoryName,setCategoryName] = useState<string>("");
+    // function for load  exists categories
     async function loadCategories(){
         const response = await axios.get("http://localhost:8080/categories");
         // console.log(response);// debugging
