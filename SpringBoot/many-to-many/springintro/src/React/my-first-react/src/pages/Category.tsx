@@ -27,6 +27,15 @@ function Category(){
                 // show this content only if the category is true
             }
 
+            <h2>Create category</h2>
+
+            <form>
+                <label>Category Name: </label>
+                <input type="text" required/>
+
+                <button>Create Category</button>
+            </form>
+
         </div>
     )
 }
