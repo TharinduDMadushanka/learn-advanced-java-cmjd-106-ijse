@@ -1,6 +1,6 @@
 import axios from "axios";
 import {useState} from "react";
-import CategoryType from "../types/CategoryType.tsx";
+import CategoryType from "../types/CategoryType";
 
 function Category(){
 
@@ -16,6 +16,17 @@ function Category(){
         <div>
             <h1>Categories</h1>
             <button onClick={loadCategories}>Load Category</button>
+
+            {categories && categories.map(function (category:CategoryType){
+                return (
+                    <div>
+                        {category.name}
+                    </div>
+                )
+            })
+                // show this content only if the category is true
+            }
+
         </div>
     )
 }
