@@ -1,10 +1,10 @@
-import './App.css';
-// @ts-ignore
-import Vehicle from "./components/vehicle.tsx";
+import '../App.css';
+
+import Vehicle from "../components/vehicle.tsx";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
-function Home(){
-
+function Home() {
     // useState hook for username
     const [username, setUsername] = useState<string>("");
 
@@ -26,6 +26,8 @@ function Home(){
             <h1>Hello {username}</h1>
             <p>You can edit this..!</p>
 
+            <Link to={"/profile"}>Profile</Link>
+
             <label>Enter user name  </label>
             <input type="text" onChange={handleInputChange} />
 
@@ -36,8 +38,7 @@ function Home(){
             <Vehicle title="Toyota Corolla" description="Toyota Corolla is the highest sold vehicle" />
             <Vehicle title="Toyota Land Cruiser" description="Toyota Land Cruiser is the highest sold vehicle" />
         </div>
-    )
-
+    );
 }
 
-export default Home
+export default Home;

@@ -1,20 +1,24 @@
 import './App.css';
 
-// @ts-ignore
-import Home from "./pages/Home.tsx";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Category from "./pages/Category";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 // Parent component
 function App() {
-    return(
+    return (
         <BrowserRouter>
             <Routes>
-                <Route path= "/" element = {<Home/>}/>
+                <Route path="/" element={<Home />} />
+                <Route path="/profile" element={<Profile/>} />
+                <Route path={"category"} element={<Category/>}/>
             </Routes>
         </BrowserRouter>
-    )
+    );
 }
 
+// Commented out code that may not be needed
 // Define a type
 // interface VehicleType {
 //     title: string;
