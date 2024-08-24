@@ -16,8 +16,32 @@ function Product() {
     }, [])
 
     return (
-        <div>
-            <h1 className="text-white">Products</h1>
+        <div className="container mx-auto py-5">
+            <h1 className="text-white text-3xl font-bold">Products</h1>
+
+            <table className="table min-w-full border-separate border-spacing-0 text-center pt-5">
+                <thead className="bg-slate-600 ">
+                    <th className="font-bold">Product ID</th>
+                    <th className="font-bold">Product Name</th>
+                    <th className="font-bold">Product Price</th>
+                    <th className="font-bold">Actions</th>
+                </thead>
+
+                <tbody>
+                {products.map(function (product) {
+                    return (
+                        <tr>
+                            <td>{product.id}</td>
+                            <td>{product.name}</td>
+                            <td>{product.description}</td>
+                            <td></td>
+                        </tr>
+                    )
+                })}
+
+                </tbody>
+
+            </table>
 
             {products.map(function (product) {
                 return (
