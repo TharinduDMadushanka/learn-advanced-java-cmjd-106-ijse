@@ -4,12 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ijse.springintro.dto.ProductReqDTO;
 import com.ijse.springintro.entity.Category;
@@ -18,6 +13,7 @@ import com.ijse.springintro.service.CategoryService;
 import com.ijse.springintro.service.ProductService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class ProductController {
 
     @Autowired

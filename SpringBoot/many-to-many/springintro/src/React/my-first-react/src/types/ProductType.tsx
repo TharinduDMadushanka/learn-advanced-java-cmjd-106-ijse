@@ -1,10 +1,11 @@
+import CategoryType from "./CategoryType";
 
-interface ProductType{
-    id : number,
-    name:string,
+interface ProductType {
+    id: number,
+    name: string,
     price: number,
-    description:string,
-    category_id: number
+    description: string,
+    category: CategoryType
 }
 
-export default  ProductType
+export default ProductType;
