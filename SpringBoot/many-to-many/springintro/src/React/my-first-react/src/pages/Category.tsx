@@ -32,28 +32,32 @@ function Category() {
     }
 
     return (
-        <div>
-            <h1>Categories</h1>
-            <button onClick={loadCategories}>Load Categories</button>
+        <div className="container mx-auto pt-5 pb-5">
+            <h1 className="text-3xl font-bold mb-5 text-slate-100">Categories</h1>
+            <button className="py-3 px-4 bg-sky-500 text-white rounded-lg hover:bg-sky-200 hover:text-black mb-2"
+                    onClick={loadCategories}>Load Categories</button>
 
             {categories.length > 0 && categories.map((category: CategoryType) => (
-                <div key={category.id}>
+                <div className="text-slate-600 border border-slate-100 rounded mb-3 p-3 shadow-lg inline-block me-3"
+                    key={category.id}>
                     {category.name}
                 </div>
             ))}
 
-            <h2>Create Category</h2>
+            <h2 className="text-3xl text-slate-100 font-bold mb-3 mt-5">Create Category</h2>
 
-            <form>
-                <label>Category Name: </label>
-                <input
-                    type="text"
-                    value={categoryName}
-                    onChange={handleCategoryName}
-                    required
-                />
-                <button type="button" onClick={handleSubmit}>Create Category</button>
-            </form>
+            <div className = "border border-slate-200 p-3 rounded-lg max-w-[350px]">
+                <form>
+                    <label className="text-slate-300 font-sm block mb-2">Category Name: </label>
+                    <input className= "text text-slate-600 font-bold mb-3 w-full p-2 border-slate-300 rounded"
+                        type="text"
+                        value={categoryName}
+                        onChange={handleCategoryName}
+                        required
+                    />
+                    <button className="py-3 px-4 bg-sky-500 text-white rounded-lg hover:bg-sky-200 hover:text-black mb-2" type="button" onClick={handleSubmit}>Create Category</button>
+                </form>
+            </div>
         </div>
     );
 }
