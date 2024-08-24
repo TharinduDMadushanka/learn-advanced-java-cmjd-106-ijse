@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import CategoryType from "../types/CategoryType";
 
 function Category() {
@@ -12,6 +12,11 @@ function Category() {
         const response = await axios.get("http://localhost:8080/categories");
         setCategories(response.data);
     }
+
+    // react side effect
+    useEffect(function () {
+        loadCategories(); // function that will be triggered at the side effect
+    },[]) // dependency array, if it is blank it will be triggered only once
 
     // Function to handle category name input change
     function handleCategoryName(event: React.ChangeEvent<HTMLInputElement>) {
