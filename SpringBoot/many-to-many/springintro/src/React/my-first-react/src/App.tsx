@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Category from "./pages/Category";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import Product from "./pages/Product.tsx";
 
 // Parent component
 function App() {
@@ -13,6 +14,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/profile" element={<Profile/>} />
                 <Route path={"category"} element={<Category/>}/>
+                <Route path={"product"} element={<Product/>} />
             </Routes>
         </BrowserRouter>
     );
