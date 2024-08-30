@@ -49,7 +49,7 @@ function Category() {
             <div className = "border border-slate-200 p-3 rounded-lg max-w-[350px]">
                 <form>
                     <label className="text-slate-300 font-sm block mb-2">Category Name: </label>
-                    <input className= "text text-slate-600 font-bold mb-3 w-full p-2 border-slate-300 rounded"
+                    <input className= "text text-slate-600 font-bold mb-4 w-full p-2 border-slate-300 rounded"
                         type="text"
                         value={categoryName}
                         onChange={handleCategoryName}
