@@ -39,6 +39,19 @@ function Orders() {
                 </tr>
                 </thead>
 
+                <tbody>
+                {orders.map(function (order){
+                    return(
+                        <tr>
+                            <td>{order.id}</td>
+                            <td>{order.orderDateTime}</td>
+                            <td>{order.totalPrice}</td>
+                            <td></td>
+                        </tr>
+                    )
+                })}
+                </tbody>
+
             </table>
 
         </div>
