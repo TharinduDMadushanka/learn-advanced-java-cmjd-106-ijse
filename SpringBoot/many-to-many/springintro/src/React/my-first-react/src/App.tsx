@@ -5,6 +5,7 @@ import Category from "./pages/Category";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product.tsx";
+import Orders from "./pages/orders/Orders.tsx";
 
 // Parent component
 function App() {
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/profile" element={<Profile/>} />
                 <Route path={"/category"} element={<Category/>}/>
                 <Route path={"/product"} element={<Product/>} />
+                <Route path={"/Orders"} element={<Orders/>} />
             </Routes>
         </BrowserRouter>
     );
