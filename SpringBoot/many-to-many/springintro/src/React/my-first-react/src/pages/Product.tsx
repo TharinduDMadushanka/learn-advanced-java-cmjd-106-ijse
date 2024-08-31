@@ -67,6 +67,7 @@ function Product() {
             console.log(error);
         }
     }
+    // update
 
     const [productEdit, setProductEdit] = useState<ProductType | null>(null);
 
@@ -104,6 +105,19 @@ function Product() {
         }
     }
 
+    // delete
+    async function deleteProduct(productId: number){
+
+        try{
+            await axios.delete(`http://localhost:8080/products/${productId}`)
+            loadProducts();
+        }catch (error){
+            console.log(error)
+        }
+
+    }
+
+
     return (
         <div className="container mx-auto pt-5 pb-5">
             <h1 className="text-3xl font-semibold mb-5">Products</h1>
@@ -131,7 +145,7 @@ function Product() {
                             </td>
 
                             <td>
-                                <button onClick={() => editProduct(product)} className="bg-red-500 text-white px-2 py-1 rounded-lg
+                                <button onClick={() => deleteProduct(product.id)} className="bg-red-500 text-white px-2 py-1 rounded-lg
                                 hover:bg-red-600">Delete
                                 </button>
                             </td>
