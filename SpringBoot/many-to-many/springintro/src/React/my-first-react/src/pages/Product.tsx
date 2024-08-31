@@ -135,7 +135,7 @@ function Product() {
                         <label className="text-slate-600 font-sm block mb-2">Category</label>
                         <select
                             className="text-slate-600 font-sm block mb-3 w-full p-2 border border-slate-300 rounded-lg"
-                            onChange={handleCategoryId} required>
+                            value={categoryId} onChange={handleCategoryId} required>
                             <option value="">Please select category</option>
                             {categories.map(function (category) {
                                 return (
