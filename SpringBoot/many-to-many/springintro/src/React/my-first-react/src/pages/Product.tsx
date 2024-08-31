@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import ProductType from "../types/ProductType";
 import axios from "axios";
 import CategoryType from "../types/CategoryType.tsx";
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 function Product() {
 
@@ -77,6 +79,30 @@ function Product() {
         setCategoryId(product.category?.id);
     }
 
+    async function updateProduct(){
+        const date = {
+            name: productName,
+            price: price,
+            description: description,
+            categoryId: categoryId
+        }
+
+        try{
+
+            await axios.put(`http://localhost:8080/products/ ${ productEdit?.id}`, date)
+            loadProducts();
+            // setProductEdit();
+
+            setProductName("");
+            setPrice(0);
+            setDescription("");
+            setCategoryId(0)
+
+        }catch{
+            console.log(error)
+        }
+    }
+
     return (
         <div className="container mx-auto pt-5 pb-5">
             <h1 className="text-3xl font-semibold mb-5">Products</h1>
@@ -146,11 +172,12 @@ function Product() {
                         </select>
                     </div>
 
+                    {/*conditional rendering*/}
                     {productEdit ? (
                             <>
                                 <button type="button"
                                         className="py-3 px-4 bg-slate-800 text-white rounded-lg hover:bg-slate-950 mb-2 text-sm"
-                                        onClick={handleSubmit}>Update Product
+                                        onClick={updateProduct}>Update Product
                                 </button>
                             </>
                         ) :
@@ -163,7 +190,6 @@ function Product() {
 
                 </form>
             </div>
-
 
         </div>
     )
