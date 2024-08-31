@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import ProductType from "../../types/ProductType.tsx";
 import axios from "axios";
+import product from "../Product.tsx";
 
 function CreateOrder() {
 
@@ -21,20 +22,32 @@ function CreateOrder() {
         loadProduct();
     }, [])
 
+
+    const [orderedProducts, setOrderedProducts] = useState<ProductType[]>([]);
+
+    function addProductToOrder(product: ProductType){
+
+        // spreading the orderedProduct array and assign new value
+        const updatedOrder = [... orderedProducts, product]
+        setOrderedProducts(updatedOrder)
+
+    }
+
+
     return (
 
         <div>
             <div className="flex">
-                <div className="w-[400px] border-r border-slate-100 p-2">
+                <div className="w-[300px] border-r border-slate-100 p-2">
                     <span className="text-xl font-semibold text-white block  p-2">Products</span>
 
                     <div className="mt-2">
                         {products.map(function (products) {
                             return (
-                                <div className="border border-slate-100 rounded-lg p-2 mb-3">
+                                <div onClick={() => addProductToOrder(products)} className="border border-slate-100 rounded-lg p-2 mb-3">
                                     <div className="text-lg font-semibold text-white">{products.name}</div>
                                     <div className="text-sm text-white">{products.category?.name}</div>
-                                    <div className="text-sm text-green-500 text-right">{products.price}</div>
+                                    <div className="text-sm text-green-500 text-right">Rs. {products.price}</div>
                                 </div>
                             )
                         })}
