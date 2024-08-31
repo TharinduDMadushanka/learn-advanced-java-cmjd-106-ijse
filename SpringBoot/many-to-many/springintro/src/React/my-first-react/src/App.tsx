@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product.tsx";
 import Orders from "./pages/orders/Orders.tsx";
+import CreateOrder from "./pages/orders/CreateOrder.tsx";
 
 // Parent component
 function App() {
@@ -17,6 +18,7 @@ function App() {
                 <Route path={"/category"} element={<Category/>}/>
                 <Route path={"/product"} element={<Product/>} />
                 <Route path={"/Orders"} element={<Orders/>} />
+                <Route path="/orders/create" element={<CreateOrder/>} />
             </Routes>
         </BrowserRouter>
     );
