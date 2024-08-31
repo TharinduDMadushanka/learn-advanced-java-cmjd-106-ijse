@@ -86,7 +86,10 @@ function Product() {
                             <td>{product.id}</td>
                             <td>{product.name}</td>
                             <td>{product.price}</td>
-                            <td></td>
+                            <td>
+                                <button className="bg-amber-600 text-white px-2 py-1 rounded-lg
+                                hover:bg-slate-300">Edit</button>
+                            </td>
                         </tr>
                     )
                 })}
