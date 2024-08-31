@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import OrderType from "../../types/OrderType.tsx";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 function Orders() {
 
@@ -28,6 +29,8 @@ function Orders() {
         <div className="container mx-auto pt-5 pb-5">
             <h1 className="text-3xl font-semibold mb-5">Orders</h1>
 
+            <Link to="/orders/create" className="text-blue-600">Add Orders</Link>
+
             <table className="w-full border-separate border-spacing-0 border-none text-left">
 
                 <thead>
@@ -39,6 +42,7 @@ function Orders() {
                 </tr>
                 </thead>
 
+                {/*load order*/}
                 <tbody>
                 {orders.map(function (order){
                     return(
