@@ -66,6 +66,17 @@ function Product() {
         }
     }
 
+    const [productEdit,setProductEdit] = useState<ProductType>();
+
+    function editProduct(product: ProductType){
+       setProductEdit(product);
+
+       setProductName(product.name);
+       setPrice(product.price);
+       setDescription(product.description);
+       setCategoryId(product.category?.id);
+    }
+
     return (
         <div className="container mx-auto pt-5 pb-5">
             <h1 className="text-3xl font-semibold mb-5">Products</h1>
@@ -87,7 +98,7 @@ function Product() {
                             <td>{product.name}</td>
                             <td>{product.price}</td>
                             <td>
-                                <button className="bg-amber-600 text-white px-2 py-1 rounded-lg
+                                <button  className="bg-amber-600 text-white px-2 py-1 rounded-lg
                                 hover:bg-slate-300">Edit</button>
                             </td>
                         </tr>
