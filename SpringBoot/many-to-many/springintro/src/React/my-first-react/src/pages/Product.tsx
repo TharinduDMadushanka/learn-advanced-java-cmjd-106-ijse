@@ -68,7 +68,7 @@ function Product() {
         }
     }
 
-    const [productEdit, setProductEdit] = useState<ProductType>();
+    const [productEdit, setProductEdit] = useState<ProductType | null>(null);
 
     function editProduct(product: ProductType) {
         setProductEdit(product);
@@ -90,6 +90,7 @@ function Product() {
         try{
 
             await axios.put(`http://localhost:8080/products/ ${ productEdit?.id}`, date)
+            setProductEdit(null)
             loadProducts();
             // setProductEdit();
 
