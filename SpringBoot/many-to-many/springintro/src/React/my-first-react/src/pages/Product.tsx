@@ -66,15 +66,15 @@ function Product() {
         }
     }
 
-    const [productEdit,setProductEdit] = useState<ProductType>();
+    const [productEdit, setProductEdit] = useState<ProductType>();
 
-    function editProduct(product: ProductType){
-       setProductEdit(product);
+    function editProduct(product: ProductType) {
+        setProductEdit(product);
 
-       setProductName(product.name);
-       setPrice(product.price);
-       setDescription(product.description);
-       setCategoryId(product.category?.id);
+        setProductName(product.name);
+        setPrice(product.price);
+        setDescription(product.description);
+        setCategoryId(product.category?.id);
     }
 
     return (
@@ -99,7 +99,8 @@ function Product() {
                             <td>{product.price}</td>
                             <td>
                                 <button onClick={() => editProduct(product)} className="bg-amber-600 text-white px-2 py-1 rounded-lg
-                                hover:bg-slate-300">Edit</button>
+                                hover:bg-slate-300">Edit
+                                </button>
                             </td>
                         </tr>
                     )
@@ -145,10 +146,21 @@ function Product() {
                         </select>
                     </div>
 
-                    <button type="button"
-                            className="py-3 px-4 bg-slate-800 text-white rounded-lg hover:bg-slate-950 mb-2 text-sm"
-                            onClick={handleSubmit}>Create Product
-                    </button>
+                    {productEdit ? (
+                            <>
+                                <button type="button"
+                                        className="py-3 px-4 bg-slate-800 text-white rounded-lg hover:bg-slate-950 mb-2 text-sm"
+                                        onClick={handleSubmit}>Update Product
+                                </button>
+                            </>
+                        ) :
+
+                        <button type="button"
+                                className="py-3 px-4 bg-slate-800 text-white rounded-lg hover:bg-slate-950 mb-2 text-sm"
+                                onClick={handleSubmit}>Create Product
+                        </button>
+                    }
+
                 </form>
             </div>
 
