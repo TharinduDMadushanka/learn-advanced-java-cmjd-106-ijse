@@ -98,7 +98,7 @@ function Product() {
                             <td>{product.name}</td>
                             <td>{product.price}</td>
                             <td>
-                                <button  className="bg-amber-600 text-white px-2 py-1 rounded-lg
+                                <button onClick={() => editProduct(product)} className="bg-amber-600 text-white px-2 py-1 rounded-lg
                                 hover:bg-slate-300">Edit</button>
                             </td>
                         </tr>
