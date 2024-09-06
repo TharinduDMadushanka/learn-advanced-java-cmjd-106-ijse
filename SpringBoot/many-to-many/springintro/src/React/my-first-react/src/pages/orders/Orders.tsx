@@ -1,39 +1,34 @@
-import {useEffect, useState} from "react";
-import OrderType from "../../types/OrderType.tsx";
+import { useEffect, useState } from "react";
+import OrderType from "../../types/OrderType";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Orders() {
+function Order() {
 
     const [orders, setOrders] = useState<OrderType[]>([]);
 
     async function loadOrders() {
-
         try {
-
-            const response = await axios.get("http://localhost:8080/orders")
+            const response = await axios.get("http://localhost:8080/orders");
             setOrders(response.data);
-
         } catch (error) {
             console.log(error);
         }
-
     }
 
-    useEffect(function (){
+    useEffect(function() {
         loadOrders();
-    })
+    },[])
+
 
     return (
-
         <div className="container mx-auto pt-5 pb-5">
             <h1 className="text-3xl font-semibold mb-5">Orders</h1>
 
-            <Link to="/orders/create" className="text-blue-600">Add Orders</Link>
+            <Link to="/order/create" className="text-blue-500 mb-5 block">Add Order</Link>
 
             <table className="w-full border-separate border-spacing-0 border-none text-left">
-
-                <thead>
+                <thead className="bg-slate-200">
                 <tr>
                     <th className="w-[80px]">Order ID</th>
                     <th className="w-[200px]">Order Date and Time</th>
@@ -41,11 +36,9 @@ function Orders() {
                     <th className="w-[200px]">Actions</th>
                 </tr>
                 </thead>
-
-                {/*load order*/}
                 <tbody>
-                {orders.map(function (order){
-                    return(
+                {orders.map(function (order) {
+                    return (
                         <tr>
                             <td>{order.id}</td>
                             <td>{order.orderDateTime}</td>
@@ -55,13 +48,9 @@ function Orders() {
                     )
                 })}
                 </tbody>
-
             </table>
-
         </div>
-
-    );
-
+    )
 }
 
-export default Orders
+export default Order;
