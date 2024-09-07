@@ -1,5 +1,6 @@
 package com.ijse.springintro.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -42,6 +43,10 @@ public class JwtUtils {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public String extractUsernameFromJwt(String token) {
+        return Jwts.parserBuilder().setSigningKey(key()).build().parseClaimsJws(token).getBody().getSubject(); // getting username
     }
 
 }

@@ -21,7 +21,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         String authHeader = request.getHeader("Authorization");
         if (StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer ")) {
             return authHeader.substring(7); //remove first 7 characters from token which is "Bearer" then now have token only
-        }else {
+        } else {
             return null;
         }
 
@@ -30,7 +30,12 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        // check JWT token in the request
+        // check JWT token in the request and validate
+        String jwtToken = parseJwtFromHeader(request);
+
+        if (jwtToken != null && jwtUtils.validateJwtToken(jwtToken)) {
+            //extract username from JWT token
+        }
 
     }
 }
