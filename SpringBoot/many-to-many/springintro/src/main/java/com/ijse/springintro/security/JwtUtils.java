@@ -32,4 +32,16 @@ public class JwtUtils {
                 .signWith(key(), SignatureAlgorithm.HS256).compact();
     }
 
+    // validate token
+    public boolean validateJwtToken(String token) {
+
+        try {
+            Jwts.parserBuilder().setSigningKey(key()).build().parse(token);
+            return true;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
