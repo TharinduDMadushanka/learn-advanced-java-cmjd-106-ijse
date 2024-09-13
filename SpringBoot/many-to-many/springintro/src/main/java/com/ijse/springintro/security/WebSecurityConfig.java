@@ -19,6 +19,7 @@ import java.security.Security;
 @EnableMethodSecurity
 public class WebSecurityConfig {
 
+
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();
