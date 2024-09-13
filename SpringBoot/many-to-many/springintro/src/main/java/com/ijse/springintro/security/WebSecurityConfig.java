@@ -1,6 +1,5 @@
 package com.ijse.springintro.security;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.security.Security;
-
 @Configuration
 @EnableMethodSecurity
 public class WebSecurityConfig {
@@ -25,6 +22,7 @@ public class WebSecurityConfig {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
+    // Define a bean for DaoAuthenticationProvider with UserDetailsService and PasswordEncoder
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -34,43 +32,50 @@ public class WebSecurityConfig {
         return authProvider;
     }
 
-    // UserDetailsServiceImpl bean
+    // Define a bean for UserDetailsService
     @Bean
     public UserDetailsService userDetailsService() {
         return userDetailsService;
     }
 
+    // Define a bean for AuthTokenFilter
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();
     }
 
+    // Define a bean for PasswordEncoder
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // Define a bean for AuthenticationManager
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
     }
 
+    // Configure HttpSecurity and register filters
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers("/auth/****").permitAll()
-                                .anyRequest().authenticated()
+                                .requestMatchers("/auth/***").permitAll() // Allowing auth/login and auth/register paths
+                                .anyRequest().authenticated() // User needs to log in to access everything else
                 );
 
-        // add DaoAuthenticationProvider
         http.authenticationProvider(authenticationProvider());
 
-        //add filter
-        http.addFilterBefore(authenticationJwtTokenFilter(), AuthTokenFilter.class);
+        // Add filter before UsernamePasswordAuthenticationFilter
+        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
-
 }
+
+/**
+ * to create new user -> "/users/**"
+ */

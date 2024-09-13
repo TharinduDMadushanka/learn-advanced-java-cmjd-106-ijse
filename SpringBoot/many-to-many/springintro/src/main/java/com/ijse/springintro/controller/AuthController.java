@@ -28,10 +28,9 @@ public class AuthController {
     private JwtUtils jwtUtils;
 
     @PostMapping("/auth/login")
-    public String login(@RequestBody User user) {
+    public String login (@RequestBody User user) {
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
