@@ -1,13 +1,16 @@
 package com.ijse.springintro.security;
 
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -19,6 +22,23 @@ import java.security.Security;
 @EnableMethodSecurity
 public class WebSecurityConfig {
 
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+
+        return authProvider;
+    }
+
+    // UserDetailsServiceImpl bean
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return userDetailsService;
+    }
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
@@ -44,6 +64,9 @@ public class WebSecurityConfig {
                                 .requestMatchers("/auth/****").permitAll()
                                 .anyRequest().authenticated()
                 );
+
+        // add DaoAuthenticationProvider
+        http.authenticationProvider(authenticationProvider());
 
         //add filter
         http.addFilterBefore(authenticationJwtTokenFilter(), AuthTokenFilter.class);
