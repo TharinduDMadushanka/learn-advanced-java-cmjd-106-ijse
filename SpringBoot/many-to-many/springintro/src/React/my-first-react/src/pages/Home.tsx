@@ -28,9 +28,11 @@ function Home() {
 
             <div className="w-full bg-gray-300 p-2 rounded-lg">
                 <Link to={"/profile"}>Profile</Link>
-                <Link to={"/product"}>Profile</Link>
-                <Link to={"/category"}>Profile</Link>
-                <Link to={"/order"}>Profile</Link>
+                <Link to={"/product"}>Product</Link>
+                <Link to={"/category"}>Category</Link>
+                <Link to={"/order"}>Order</Link>
+
+                <button className="bg-amber-600">Logout</button>
             </div>
 
             <label>Enter user name  </label>
