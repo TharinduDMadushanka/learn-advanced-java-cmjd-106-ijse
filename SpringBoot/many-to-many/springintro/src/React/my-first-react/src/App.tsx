@@ -9,6 +9,7 @@ import Orders from "./pages/orders/Orders.tsx";
 import CreateOrder from "./pages/orders/CreateOrder.tsx";
 import {AuthProvider} from "./context/AuthContext.tsx";
 import Login from "./pages/Auth/Login.tsx";
+import ProtectedRout from "./components/ProtectedRout.tsx";
 
 // Parent component
 function App() {
@@ -16,12 +17,16 @@ function App() {
         <AuthProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/profile" element={<Profile/>} />
-                    <Route path={"/category"} element={<Category/>}/>
-                    <Route path={"/product"} element={<Product/>} />
-                    <Route path={"/Orders"} element={<Orders/>} />
-                    <Route path="/orders/create" element={<CreateOrder/>} />
+                    {/*Protected Routs- need login to access bellow thing*/}
+                    <Route element={<ProtectedRout/>}>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/profile" element={<Profile/>} />
+                        <Route path={"/category"} element={<Category/>}/>
+                        <Route path={"/product"} element={<Product/>} />
+                        <Route path={"/Orders"} element={<Orders/>} />
+                        <Route path="/orders/create" element={<CreateOrder/>} />
+                    </Route>
+                    {/*open rout*/}
                     <Route path="/auth/login" element={<Login/>}/>
                 </Routes>
             </BrowserRouter>
