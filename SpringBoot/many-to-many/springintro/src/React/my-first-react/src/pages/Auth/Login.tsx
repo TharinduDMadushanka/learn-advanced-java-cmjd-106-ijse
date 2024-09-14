@@ -30,7 +30,7 @@ function Login() {
         try{
             const response = await axios.post("http://localhost:8080/auth/login",data);
             login(response.data)
-            navigate("/products");
+            navigate("/");
             console.log(response)
         }catch (error){
             setError("Error at Login.!");

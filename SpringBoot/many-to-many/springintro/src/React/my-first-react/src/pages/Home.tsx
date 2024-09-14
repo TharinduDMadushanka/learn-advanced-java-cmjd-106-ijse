@@ -26,7 +26,12 @@ function Home() {
             <h1>Hello {username}</h1>
             <p>You can edit this..!</p>
 
-            <Link to={"/profile"}>Profile</Link>
+            <div className="w-full bg-gray-300 p-2 rounded-lg">
+                <Link to={"/profile"}>Profile</Link>
+                <Link to={"/product"}>Profile</Link>
+                <Link to={"/category"}>Profile</Link>
+                <Link to={"/order"}>Profile</Link>
+            </div>
 
             <label>Enter user name  </label>
             <input type="text" onChange={handleInputChange} />
