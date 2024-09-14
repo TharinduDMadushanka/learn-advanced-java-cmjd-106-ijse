@@ -1,10 +1,13 @@
 import {useState} from "react";
 import axios from "axios";
 import {useAuth} from "../../context/AuthContext.tsx";
+import {useNavigate} from "react-router-dom";
 
 function Login() {
 
     const {login} = useAuth();
+
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
@@ -26,6 +29,7 @@ function Login() {
         try{
             const response = await axios.post("http://localhost:8080/auth/login",data);
             login(response.data)
+            navigate("/products");
             console.log(response)
         }catch (error){
             setError("Error at Login.!");
