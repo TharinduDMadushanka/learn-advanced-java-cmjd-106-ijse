@@ -15,6 +15,7 @@ function Login() {
 
     async function submit() {
         // disable auto submit
+        // @ts-ignore
         event.preventDefault()
 
         if (username === "" || password ===""){
