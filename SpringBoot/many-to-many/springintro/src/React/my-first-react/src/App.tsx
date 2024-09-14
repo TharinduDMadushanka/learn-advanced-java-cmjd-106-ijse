@@ -7,20 +7,23 @@ import Profile from "./pages/Profile";
 import Product from "./pages/Product.tsx";
 import Orders from "./pages/orders/Orders.tsx";
 import CreateOrder from "./pages/orders/CreateOrder.tsx";
+import {AuthProvider} from "./context/AuthContext.tsx";
 
 // Parent component
 function App() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/profile" element={<Profile/>} />
-                <Route path={"/category"} element={<Category/>}/>
-                <Route path={"/product"} element={<Product/>} />
-                <Route path={"/Orders"} element={<Orders/>} />
-                <Route path="/orders/create" element={<CreateOrder/>} />
-            </Routes>
-        </BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/profile" element={<Profile/>} />
+                    <Route path={"/category"} element={<Category/>}/>
+                    <Route path={"/product"} element={<Product/>} />
+                    <Route path={"/Orders"} element={<Orders/>} />
+                    <Route path="/orders/create" element={<CreateOrder/>} />
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
     );
 }
 
