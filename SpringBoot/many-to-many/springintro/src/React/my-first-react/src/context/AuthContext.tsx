@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from "react";
+import {createContext, useContext, useEffect, useState} from "react";
 import AuthContextType from "../types/AuthContextType.tsx";
 import AuthProviderPropsType from "../types/AuthProviderPropsType.tsx";
 
@@ -18,12 +18,25 @@ export function AuthProvider({children}: AuthProviderPropsType) {
     function login(jwtToken: string) {
         setIsAuthenticated(true);
         setJwtToken(jwtToken);
+        // add token in to browser local storage
+        localStorage.setItem("token", jwtToken);
     }
 
     function logout() {
         setIsAuthenticated(false);
         setJwtToken(null)
+        // remove when logout
+        localStorage.removeItem("token")
     }
+
+    // when load the page store token in to the local storage
+    useEffect(()=>{
+        const token = localStorage.getItem("token");
+        if (token != null){
+            setIsAuthenticated(true);
+            setJwtToken(token)
+        }
+    },[])
 
     return (
         <AuthContext.Provider value={{isAuthenticated, jwtToken, login, logout}}>
