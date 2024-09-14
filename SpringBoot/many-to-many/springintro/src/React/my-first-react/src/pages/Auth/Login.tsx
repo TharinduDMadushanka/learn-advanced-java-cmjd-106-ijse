@@ -1,18 +1,36 @@
 import {useState} from "react";
+import axios from "axios";
+import {useAuth} from "../../context/AuthContext.tsx";
 
 function Login() {
+
+    const {login} = useAuth();
 
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [error, setError]=useState<string>("")
 
-    function submit() {
+    async function submit() {
         // disable auto submit
         event.preventDefault()
 
         if (username === "" || password ===""){
             setError("Username and Password are required.!")
         }
+
+        const data = {
+            username: username,
+            password:password
+        }
+
+        try{
+            const response = await axios.post("http://localhost:8080/auth/login",data);
+            login(response.data)
+            console.log(response)
+        }catch (error){
+            setError("Error at Login.!");
+        }
+
     }
 
     return (
