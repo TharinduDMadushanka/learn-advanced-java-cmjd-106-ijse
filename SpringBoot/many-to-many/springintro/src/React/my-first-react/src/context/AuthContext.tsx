@@ -5,6 +5,7 @@ import AuthProviderPropsType from "../types/AuthProviderPropsType.tsx";
 export const AuthContext = createContext<AuthContextType>({
     isAuthenticated: false,
     jwtToken: null,
+    loading:true,
     login: () => {
     },
     logout: () => {
@@ -14,6 +15,7 @@ export const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({children}: AuthProviderPropsType) {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [jwtToken, setJwtToken] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true)
 
     function login(jwtToken: string) {
         setIsAuthenticated(true);
@@ -35,11 +37,14 @@ export function AuthProvider({children}: AuthProviderPropsType) {
         if (token != null){
             setIsAuthenticated(true);
             setJwtToken(token)
+            setLoading(true)
+        }else {
+            setLoading(false)
         }
     },[])
 
     return (
-        <AuthContext.Provider value={{isAuthenticated, jwtToken, login, logout}}>
+        <AuthContext.Provider value={{isAuthenticated, jwtToken,loading, login, logout}}>
             {children}
         </AuthContext.Provider>
     )

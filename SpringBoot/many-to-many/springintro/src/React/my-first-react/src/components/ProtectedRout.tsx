@@ -3,14 +3,16 @@ import {Navigate, Outlet} from "react-router-dom";
 
 function ProtectedRout(){
 
-    const {isAuthenticated} = useAuth()
+    const {isAuthenticated, loading} = useAuth()
 
-    if (isAuthenticated){
-        return <Outlet/>
-    }else {
-        return (
-            <Navigate to="/auth/login"/>
-        )
+    if (loading){
+        if (isAuthenticated){
+            return <Outlet/>
+        }else {
+            return (
+                <Navigate to="/auth/login"/>
+            )
+        }
     }
 
 }
