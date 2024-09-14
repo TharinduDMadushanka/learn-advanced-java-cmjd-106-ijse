@@ -8,6 +8,7 @@ import Product from "./pages/Product.tsx";
 import Orders from "./pages/orders/Orders.tsx";
 import CreateOrder from "./pages/orders/CreateOrder.tsx";
 import {AuthProvider} from "./context/AuthContext.tsx";
+import Login from "./pages/Auth/Login.tsx";
 
 // Parent component
 function App() {
@@ -21,6 +22,7 @@ function App() {
                     <Route path={"/product"} element={<Product/>} />
                     <Route path={"/Orders"} element={<Orders/>} />
                     <Route path="/orders/create" element={<CreateOrder/>} />
+                    <Route path="/auth/login" element={<Login/>}/>
                 </Routes>
             </BrowserRouter>
         </AuthProvider>
