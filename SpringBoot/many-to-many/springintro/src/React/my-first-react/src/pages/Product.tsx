@@ -71,7 +71,7 @@ function Product() {
         }
 
         try {
-            await axios.post("http://localhost:8080/products", data);
+            await axios.post("http://localhost:8080/products", data,config);
             loadProducts();
             setProductName("");
             setPrice(0);
@@ -104,7 +104,7 @@ function Product() {
 
         try{
 
-            await axios.put(`http://localhost:8080/products/ ${ productEdit?.id}`, date)
+            await axios.put(`http://localhost:8080/products/ ${ productEdit?.id}`, date,config)
             setProductEdit(null)
             loadProducts();
             // setProductEdit();

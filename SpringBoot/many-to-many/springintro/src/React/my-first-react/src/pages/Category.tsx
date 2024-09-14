@@ -1,22 +1,36 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import CategoryType from "../types/CategoryType";
+import {useAuth} from "../context/AuthContext.tsx";
 
 function Category() {
+
+    const {isAuthenticated, jwtToken} = useAuth();
+
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const [categoryName, setCategoryName] = useState<string>("");
+
+    const config = {
+        headers:{
+            Authorization: `Bearer ${jwtToken}`
+        }
+    }
 
     // Function to load existing categories
     // @ts-ignore
     async function loadCategories() {
-        const response = await axios.get("http://localhost:8080/categories");
+        const response = await axios.get("http://localhost:8080/categories",config);
         setCategories(response.data);
     }
 
     // react side effect
     useEffect(function () {
-        loadCategories(); // function that will be triggered at the side effect
-    },[]) // dependency array, if it is blank it will be triggered only once
+
+        if (isAuthenticated){
+            loadCategories(); // function that will be triggered at the side effect
+        }
+
+    },[isAuthenticated]) // dependency array, if it is blank it will be triggered only once
 
     // Function to handle category name input change
     function handleCategoryName(event: React.ChangeEvent<HTMLInputElement>) {
@@ -26,7 +40,7 @@ function Category() {
     // Function to handle form submission
     async function handleSubmit() {
         const data = { name: categoryName };
-        const response = await axios.post("http://localhost:8080/categories", data);
+        const response = await axios.post("http://localhost:8080/categories", data,config);
         console.log(response);
         loadCategories();
     }
