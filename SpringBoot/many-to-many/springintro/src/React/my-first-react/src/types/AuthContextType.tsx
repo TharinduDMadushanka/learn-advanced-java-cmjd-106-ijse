@@ -1,5 +1,5 @@
 interface AuthContextType{
-    isAuthentication: boolean;
+    isAuthenticated: boolean;
     jwtToken:string | null;
     login: (jwtToken: string) => void;
     logout: () => void;
