@@ -17,6 +17,7 @@ const categorySchema = new Schema<CategoryType>({
     }
 });
 
-const CategoryModel = mongoose.model<CategoryType>('Catgory', categorySchema)
+const CategoryModel = mongoose.model<CategoryType>('Category', categorySchema);  // Correct model name
+
 
 export default CategoryModel; // similar to entity in Springboot
